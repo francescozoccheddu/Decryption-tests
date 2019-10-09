@@ -9,20 +9,20 @@ def _shift_ch(c, k, ab):
 def _shift_str(pt, k, ab):
     return "".join([_shift_ch(c, k, ab) for c in pt])
 
-def _sum_lf(mf, lf, ab, k):
+def _sum_f(tf, lf, ab, k):
     s = 0
     for c in ab:
-        s += mf.get(_shift_ch(c, k, ab), 0) * lf.get(c, 0)
+        s += tf.get(_shift_ch(c, k, ab), 0) * lf.get(c, 0)
     return s
 
 def _attack_str(ct, lf):
     import frequency
-    mf = frequency.measure(ct)
     lab = frequency.alphabet(lf)
+    tf = frequency.probability(ct)
     maxs = 0
     candk = 0
     for k in range(len(lf)):
-        s = _sum_lf(mf, lf, lab, k)
+        s = _sum_f(tf, lf, lab, k)
         if s > maxs:
             maxs = s
             candk = k
