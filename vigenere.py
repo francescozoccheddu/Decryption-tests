@@ -65,6 +65,9 @@ def _attack_shift_str(ct, kn, lf):
             dt[i * kn + ki] = c
     return "".join(dt)
 
+# ----------------
+# Public interface
+
 def encode(pt, k, ab):
     return _shift_str(pt, k, ab)
 

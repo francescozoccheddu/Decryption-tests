@@ -28,6 +28,9 @@ def _attack_str(ct, lf):
             candk = k
     return candk
 
+# ----------------
+# Public interface
+
 def encode(pt, k, ab):
     return _shift_str(pt, k, ab)
 
