@@ -32,11 +32,12 @@ def _attack_str(ct, lf):
 # Public interface
 
 def encode(pt, k, ab):
-    return _shift_str(pt, k, ab)
+    import frequency
+    return _shift_str(pt, k, frequency.alphabet(ab))
 
 def decode(pt, k, ab):
-    return _shift_str(pt, -k, ab)
+    import frequency
+    return _shift_str(pt, -k, frequency.alphabet(ab))
 
 def attackDecode(ct, lf):
-    import frequency
-    return decode(ct, _attack_str(ct, lf), frequency.alphabet(lf))
+    return decode(ct, _attack_str(ct, lf), lf)

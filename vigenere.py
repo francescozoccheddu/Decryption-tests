@@ -69,10 +69,12 @@ def _attack_shift_str(ct, kn, lf):
 # Public interface
 
 def encode(pt, k, ab):
-    return _shift_str(pt, k, ab)
+    import frequency
+    return _shift_str(pt, k, frequency.alphabet(ab))
 
 def decode(ct, k, ab):
-    return _shift_str(pt, k, ab, True)
+    import frequency
+    return _shift_str(ct, k, frequency.alphabet(ab), True)
 
 def attackDecode(ct, lf, maxkn=None):
     lioc = _ioc_lf(lf)
