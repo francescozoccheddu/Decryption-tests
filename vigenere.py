@@ -64,3 +64,16 @@ def _attack_shift_str(ct, kn, lf):
         for i, c in enumerate(dsstr):
             dt[i * kn + ki] = c
     return "".join(dt)
+
+def encode(pt, k, ab):
+    return _shift_str(pt, k, ab)
+
+def decode(ct, k, ab):
+    return _shift_str(pt, k, ab, True)
+
+def attackDecode(ct, lf, maxkn=None):
+    lioc = _ioc_lf(lf)
+    multh = lioc / 10
+    minioc = lioc / 2
+    kn = _attack_kn_str(ct, lf, maxkn, multh, minioc, False, 10)
+    return _attack_shift_str(ct, kn, lf)
