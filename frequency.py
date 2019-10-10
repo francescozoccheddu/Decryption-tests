@@ -1,8 +1,8 @@
-def load(language):
+def load(lang):
     import json
     import os
     rootpath = os.path.dirname(os.path.realpath(__file__))
-    filepath = os.path.join(rootpath, "data", "frequency", f"{language}.json")
+    filepath = os.path.join(rootpath, "data", "frequency", f"{lang}.json")
     with open(filepath, "r") as file:
         return json.load(file)
 
@@ -30,3 +30,10 @@ def alphabet(x):
         return list(x.keys())
     else:
         return x
+
+def caseSensitive(lf):
+    cslf = dict()
+    for c, f in lf.items():
+        cslf[c.lower()] = f
+        cslf[c.upper()] = f
+    return cslf 
